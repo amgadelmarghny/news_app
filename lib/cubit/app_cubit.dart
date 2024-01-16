@@ -4,7 +4,6 @@ import 'package:news_app/views/business_body.dart';
 import 'package:news_app/views/sciences_body.dart';
 import 'package:news_app/views/sports_body.dart';
 
-
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -24,4 +23,9 @@ class AppCubit extends Cubit<AppState> {
     BottomNavigationBarItem(
         icon: Icon(Icons.science_outlined), label: 'Science'),
   ];
+
+  void changeBody(int index) {
+    currentIndex = index;
+    emit(BottomNavBarState());
+  }
 }

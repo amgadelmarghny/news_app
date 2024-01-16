@@ -15,7 +15,17 @@ class HomeView extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: const Text('News App')),
+          appBar: AppBar(
+            title: const Text('News App'),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                ),
+              )
+            ],
+          ),
           body: appCubit.currentBody[appCubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: appCubit.currentIndex,

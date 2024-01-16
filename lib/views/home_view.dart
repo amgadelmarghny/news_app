@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/cubit/app_cubit.dart';
+
+import '../shared/cubit/app_cubit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -10,9 +11,7 @@ class HomeView extends StatelessWidget {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
 
     return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(

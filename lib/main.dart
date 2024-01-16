@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/cubit/app_cubit.dart';
-
+import 'package:news_app/shared/network/remot/dio.dart';
 import 'package:news_app/views/home_view.dart';
 
+import 'shared/cubit/app_cubit.dart';
+
 void main() {
+  DioHelper.init();
   runApp(const NewsApp());
 }
 
@@ -23,7 +25,6 @@ class _NewsAppState extends State<NewsApp> {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          
           iconTheme: IconThemeData(size: 30),
           backgroundColor: Colors.white,
           systemOverlayStyle: SystemUiOverlayStyle(

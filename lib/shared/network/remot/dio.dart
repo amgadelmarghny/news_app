@@ -13,11 +13,12 @@ abstract class DioHelper {
     ));
   }
 
-  static Future get({
+  static Future<Response> get ({
     required String url,
     required Map<String,dynamic> query,
-  }) {
-    return dio!.get(
+  }) async{
+    return await dio!.get(
+      //put the get method without ? sign
       url,
       queryParameters: query,
     );

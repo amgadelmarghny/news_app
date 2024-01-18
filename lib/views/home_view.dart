@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../shared/cubit/app_cubit.dart';
 
 class HomeView extends StatelessWidget {
@@ -34,6 +33,11 @@ class HomeView extends StatelessWidget {
               appCubit.changeBody(index);
             },
           ),
+          floatingActionButton: FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                appCubit.getData(category: 'business');
+              }),
         );
       },
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/shared/componants/news_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/shared/componants/list_news_item_view.dart';
+import 'package:news_app/shared/cubit/app_cubit.dart';
 
 class BusinessBody extends StatelessWidget {
   const BusinessBody({
@@ -8,9 +10,12 @@ class BusinessBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: NewsItem(),
+    List<dynamic> list = BlocProvider.of<AppCubit>(context).newsList;
+    return BlocConsumer<AppCubit, AppState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return ListNewsItemView(list: list);
+      },
     );
   }
 }

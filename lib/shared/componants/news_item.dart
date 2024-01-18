@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
-
+  const NewsItem({super.key, required this.mapNewsItemData});
+  final Map mapNewsItemData;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,9 +14,9 @@ class NewsItem extends StatelessWidget {
             width: 130,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
+              image: DecorationImage(
                 image: NetworkImage(
-                  'https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg',
+                  '${mapNewsItemData['urlToImage']}',
                 ),
                 fit: BoxFit.cover,
               ),
@@ -25,24 +25,24 @@ class NewsItem extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Text(
-                    'TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleee',
+                    '${mapNewsItemData['title']}',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 Text(
-                  '20/ 8 / 29001',
-                  style: TextStyle(
+                  '${mapNewsItemData['publishedAt']}',
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.grey,
                   ),

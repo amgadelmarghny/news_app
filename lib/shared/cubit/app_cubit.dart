@@ -28,23 +28,31 @@ class AppCubit extends Cubit<AppState> {
   // @index is the page number that you want to go, not the item in list
   void changeBody(int index) {
     currentIndex = index;
+    if (index == 0) {
+      getData();
+    }
+    
     emit(BottomNavBarState());
   }
 
 /////////////////////////////////
-  Map<String, dynamic> newsList = {};
+  List<dynamic> newsList = [];
 
-  void getData({required String category}) {
-    DioHelper.get(url: 'v2/top-headlines', query: {
+  void getData(
+      //{required String category}
+      ) async {
+    emit(DioLoadingState());
+    await DioHelper.get(url: 'v2/top-headlines', query: {
       "country": 'eg',
-      "category": category,
+      "category": 'business',
       "apiKey": '708d777b7af549bfbcbe9c715aeeade6',
     }).then((value) {
-      newsList = value.data;
+      newsList = value.data['articles'];
       print('@@@@@@@@@ $newsList');
+      emit(DioGetMethodState());
     }).catchError((err) {
       print('There is an error : $err');
+      emit(DioFailurState(err: 'There is an error : $err'));
     });
-    emit(DioGetMethodState());
   }
 }

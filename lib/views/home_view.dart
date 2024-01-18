@@ -24,7 +24,9 @@ class HomeView extends StatelessWidget {
               )
             ],
           ),
-          body: appCubit.currentBody[appCubit.currentIndex],
+          body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: appCubit.currentBody[appCubit.currentIndex]),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: appCubit.currentIndex,
             type: BottomNavigationBarType.fixed,
@@ -33,11 +35,6 @@ class HomeView extends StatelessWidget {
               appCubit.changeBody(index);
             },
           ),
-          floatingActionButton: FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () {
-                appCubit.getData(category: 'business');
-              }),
         );
       },
     );

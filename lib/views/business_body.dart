@@ -12,9 +12,38 @@ class BusinessBody extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> list = BlocProvider.of<AppCubit>(context).newsList;
     return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is DioFailurState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.err),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
-        return ListNewsItemView(list: list);
+        if (state is DioLoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (state is DioGetSuccessState) {
+          return ListNewsItemView(list: list);
+        }
+        return const Center(
+          child: Column(
+            children: [
+              Text(
+                'Somthing went wrong',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                'Please try again later',
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
+        );
       },
     );
   }

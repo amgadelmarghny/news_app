@@ -31,7 +31,7 @@ class AppCubit extends Cubit<AppState> {
     if (index == 0) {
       getData();
     }
-    
+
     emit(BottomNavBarState());
   }
 
@@ -40,16 +40,17 @@ class AppCubit extends Cubit<AppState> {
 
   void getData(
       //{required String category}
-      ) async {
+      ) {
     emit(DioLoadingState());
-    await DioHelper.get(url: 'v2/top-headlines', query: {
-      "country": 'eg',
-      "category": 'business',
+    DioHelper.get(url: 'v2/everything', query: {
+      "q": 'tesla',
+      "from": '2023-12-19',
+      "sortBy": 'publishedAt',
       "apiKey": '708d777b7af549bfbcbe9c715aeeade6',
     }).then((value) {
       newsList = value.data['articles'];
       print('@@@@@@@@@ $newsList');
-      emit(DioGetMethodState());
+      emit(DioGetSuccessState());
     }).catchError((err) {
       print('There is an error : $err');
       emit(DioFailurState(err: 'There is an error : $err'));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/shared/cubit/my_observe.dart';
 import 'package:news_app/shared/network/remot/dio.dart';
 import 'package:news_app/views/home_view.dart';
 
@@ -8,6 +9,7 @@ import 'shared/cubit/app_cubit.dart';
 
 void main() {
   DioHelper.init();
+  Bloc.observer = MyObserve();
   runApp(const NewsApp());
 }
 

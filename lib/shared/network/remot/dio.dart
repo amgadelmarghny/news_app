@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 //method (url): v2/top-headlines?
 // queries: country=eg&category=business&apiKey=708d777b7af549bfbcbe9c715aeeade6
 // https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=708d777b7af549bfbcbe9c715aeeade6
+// https://newsapi.org/v2/everything?q=tesla&from=2023-12-19&sortBy=publishedAt&apiKey=708d777b7af549bfbcbe9c715aeeade6
 abstract class DioHelper {
   static Dio? dio;
   static void init() {

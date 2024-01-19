@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:news_app/shared/componants/news_item.dart';
 
@@ -14,6 +13,8 @@ class ListNewsItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
+        print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'');
+        print('News item : ${list[index]}');
         return NewsItem(mapNewsItemData: list[index]);
       },
       separatorBuilder: (contex, index) {

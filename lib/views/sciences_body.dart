@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/shared/componants/custom_bloc_consumer_body.dart';
 
 class SciencesBody extends StatelessWidget {
   const SciencesBody({
@@ -7,15 +8,7 @@ class SciencesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Center(
-        child: Text(
-          'SciencesBody',
-          style: TextStyle(fontSize: 40),
-        ),
-      ),
-    );
+    return const CustomBlocConsumerBody();
   }
 }
 

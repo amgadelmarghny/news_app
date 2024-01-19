@@ -41,7 +41,7 @@ class _NewsAppState extends State<NewsApp> {
       ),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (context) => AppCubit()..getData(),
+        create: (context) => AppCubit()..getData(category: 'business'),
         child: const HomeView(),
       ),
     );

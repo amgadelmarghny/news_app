@@ -29,7 +29,13 @@ class AppCubit extends Cubit<AppState> {
   void changeBody(int index) {
     currentIndex = index;
     if (index == 0) {
-      getData();
+      getData(category: 'business');
+    }
+    else if(index == 1){
+      getData(category: 'science');
+    }else if(index == 2){
+      getData(category: 'sports');
+
     }
 
     emit(BottomNavBarState());
@@ -38,21 +44,18 @@ class AppCubit extends Cubit<AppState> {
 /////////////////////////////////
   List<dynamic> newsList = [];
 
-  void getData(
-      //{required String category}
-      ) {
+  Future getData({required String category}) async {
     emit(DioLoadingState());
-    DioHelper.get(url: 'v2/everything', query: {
-      "q": 'tesla',
-      "from": '2023-12-19',
-      "sortBy": 'publishedAt',
+    return await DioHelper.get(url: 'v2/top-headlines', query: {
+      "country": 'eg',
+      "category": '',
       "apiKey": '708d777b7af549bfbcbe9c715aeeade6',
     }).then((value) {
       newsList = value.data['articles'];
-      print('@@@@@@@@@ $newsList');
+      debugPrint('@@@@@@@@@ $newsList');
       emit(DioGetSuccessState());
     }).catchError((err) {
-      print('There is an error : $err');
+      debugPrint('There is an error : $err');
       emit(DioFailurState(err: 'There is an error : $err'));
     });
   }

@@ -16,7 +16,8 @@ class NewsItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 image: NetworkImage(
-                  '${mapNewsItemData['urlToImage']}',
+                  mapNewsItemData['urlToImage'] ??
+                      'https://thumbs.dreamstime.com/b/word-news-12817653.jpg',
                 ),
                 fit: BoxFit.cover,
               ),

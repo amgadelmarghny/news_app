@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/shared/componants/custom_bloc_consumer_body.dart';
 
 class SportsBody extends StatelessWidget {
   const SportsBody({
@@ -7,12 +8,6 @@ class SportsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'ChatBody',
-        style: TextStyle(fontSize: 40),
-      ),
-    );
+    return const CustomBlocConsumerBody();
   }
 }
-

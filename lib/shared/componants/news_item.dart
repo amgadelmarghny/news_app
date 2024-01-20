@@ -35,10 +35,7 @@ class NewsItem extends StatelessWidget {
                     '${mapNewsItemData['title']}',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 Text(

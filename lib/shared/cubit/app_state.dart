@@ -6,6 +6,8 @@ sealed class AppState {}
 final class AppInitial extends AppState {}
 
 final class BottomNavBarState extends AppState {}
+final class ChangeSystemThemeState extends AppState {}
+
 
 final class DioGetSuccessState extends AppState {}
 

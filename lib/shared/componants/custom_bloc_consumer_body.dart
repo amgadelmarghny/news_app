@@ -21,12 +21,12 @@ class CustomBlocConsumerBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is DioLoadingState) {
+        if (state is DioLoadingState || state is BottomNavBarState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (state is DioGetSuccessState) {
+        if (state is DioGetSuccessState || state is ChangeSystemThemeState) {
           List<dynamic> list = BlocProvider.of<AppCubit>(context).newsList;
           return ListView.separated(
             itemBuilder: (context, index) {
@@ -38,11 +38,6 @@ class CustomBlocConsumerBody extends StatelessWidget {
               );
             },
             itemCount: list.length,
-          );
-        }
-        if (state is BottomNavBarState) {
-          return const Center(
-            child: CircularProgressIndicator(),
           );
         }
         return const Center(

@@ -25,34 +25,36 @@ class AppCubit extends Cubit<AppState> {
         icon: Icon(Icons.science_outlined), label: 'Science'),
   ];
 
-  // @index is the page number that you want to go, not the item in list
+  // @index is the page number that you want to go.
   void changeBody(int index) {
     currentIndex = index;
     if (index == 0) {
       getData(category: 'business');
-    }
-    else if(index == 1){
-      getData(category: 'science');
-    }else if(index == 2){
+    } else if (index == 1) {
       getData(category: 'sports');
-
+    } else if (index == 2) {
+      getData(category: 'science');
     }
-
     emit(BottomNavBarState());
+  }
+
+  bool isDark = false;
+  void changAppTheme() {
+    isDark = !isDark;
+    emit(ChangeSystemThemeState());
   }
 
 /////////////////////////////////
   List<dynamic> newsList = [];
 
-  Future getData({required String category}) async {
+  void getData({required String category}) async {
     emit(DioLoadingState());
-    return await DioHelper.get(url: 'v2/top-headlines', query: {
+    await DioHelper.get(url: 'v2/top-headlines', query: {
       "country": 'eg',
-      "category": '',
+      "category": category,
       "apiKey": '708d777b7af549bfbcbe9c715aeeade6',
     }).then((value) {
       newsList = value.data['articles'];
-      debugPrint('@@@@@@@@@ $newsList');
       emit(DioGetSuccessState());
     }).catchError((err) {
       debugPrint('There is an error : $err');

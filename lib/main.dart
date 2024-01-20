@@ -24,25 +24,63 @@ class _NewsAppState extends State<NewsApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          iconTheme: IconThemeData(size: 30),
-          backgroundColor: Colors.white,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.dark,
-            statusBarColor: Colors.white,
-          ),
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.teal,
-          elevation: 20,
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => AppCubit()..getData(category: 'business'),
-        child: const HomeView(),
+    return BlocProvider(
+      create: (context) => AppCubit()..getData(category: 'business'),
+      child: BlocConsumer<AppCubit, AppState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.teal,
+              brightness: Brightness.light,
+              textTheme: const TextTheme(
+                bodyLarge: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+              ),
+              appBarTheme: const AppBarTheme(
+                titleSpacing: 20,
+                iconTheme: IconThemeData(size: 30),
+                backgroundColor: Colors.white,
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarIconBrightness: Brightness.dark,
+                  statusBarColor: Colors.white,
+                ),
+              ),
+              bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                selectedItemColor: Colors.teal,
+                elevation: 20,
+              ),
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              primarySwatch: Colors.teal,
+              appBarTheme: const AppBarTheme(
+                titleSpacing: 20,
+                iconTheme: IconThemeData(size: 30),
+              ),
+              textTheme: const TextTheme(
+                bodyLarge: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                selectedItemColor: Colors.tealAccent,
+              ),
+            ),
+            themeMode: BlocProvider.of<AppCubit>(context).isDark
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            home: const HomeView(),
+          );
+        },
       ),
     );
   }

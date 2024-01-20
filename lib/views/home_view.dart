@@ -21,7 +21,15 @@ class HomeView extends StatelessWidget {
                 icon: const Icon(
                   Icons.search,
                 ),
-              )
+              ),
+              IconButton(
+                onPressed: () {
+                  appCubit.changAppTheme();
+                },
+                icon: const Icon(
+                  Icons.brightness_4_outlined,
+                ),
+              ),
             ],
           ),
           body: Padding(

@@ -9,8 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
 
-    return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {},
+    return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(

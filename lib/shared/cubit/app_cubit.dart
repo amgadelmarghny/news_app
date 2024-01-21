@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/shared/network/remot/dio.dart';
+import 'package:news_app/shared/network/remot/dio_helper.dart';
 import 'package:news_app/views/business_body.dart';
 import 'package:news_app/views/sciences_body.dart';
 import 'package:news_app/views/sports_body.dart';

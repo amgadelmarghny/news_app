@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/shared/cubit/my_observe.dart';
-import 'package:news_app/shared/network/remot/dio.dart';
+import 'package:news_app/shared/network/remot/dio_helper.dart';
 import 'package:news_app/views/home_view.dart';
 
 import 'shared/cubit/app_cubit.dart';
@@ -26,10 +26,7 @@ class _NewsAppState extends State<NewsApp> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AppCubit()..getData(category: 'business'),
-      child: BlocConsumer<AppCubit, AppState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+      child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,

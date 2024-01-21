@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  appCubit.changAppTheme();
+                  appCubit.changThemeMode();
                 },
                 icon: const Icon(
                   Icons.brightness_4_outlined,

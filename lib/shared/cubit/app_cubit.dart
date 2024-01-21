@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/shared/network/local/shared_pref_helper.dart';
 import 'package:news_app/shared/network/remot/dio_helper.dart';
 import 'package:news_app/views/business_body.dart';
 import 'package:news_app/views/sciences_body.dart';
@@ -39,9 +40,16 @@ class AppCubit extends Cubit<AppState> {
   }
 
   bool isDark = false;
-  void changAppTheme() {
-    isDark = !isDark;
-    emit(ChangeSystemThemeState());
+  void changThemeMode({ bool? fromShared}) async {
+    if (fromShared != null) {
+      isDark = fromShared;
+       emit(ChangeSystemThemeState());
+    } else {
+      isDark = !isDark;
+      await CashHelper.setSharePref(isDark: isDark).then((value) {
+        emit(ChangeSystemThemeState());
+      });
+    }
   }
 
 /////////////////////////////////

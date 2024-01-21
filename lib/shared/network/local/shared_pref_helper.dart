@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class SharedHelper {
+abstract class CashHelper {
   static SharedPreferences? sharedPreferences;
 
   static Future<SharedPreferences> init() async {
@@ -11,7 +11,7 @@ abstract class SharedHelper {
     return await sharedPreferences!.setBool('isDark', isDark);
   }
 
-  static void getSharePref() {
-    sharedPreferences!.getBool('isDark');
+  static bool? getSharePref() {
+    return sharedPreferences!.getBool('isDark');
   }
 }

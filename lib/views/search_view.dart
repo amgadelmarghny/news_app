@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/shared/componants/custom_snack_bar.dart';
 import 'package:news_app/shared/componants/news_item.dart';
 import 'package:news_app/shared/componants/textformfield.dart';
 import 'package:news_app/shared/cubit/search_cubit/search_cubit.dart';
@@ -35,11 +36,7 @@ class SearchView extends StatelessWidget {
                   BlocConsumer<SearchCubit, SearchState>(
                     listener: (context, state) {
                       if (state is FailurState) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(state.err),
-                          ),
-                        );
+                        customSnakBar(context, text: state.err);
                       }
                     },
                     builder: (context, state) {

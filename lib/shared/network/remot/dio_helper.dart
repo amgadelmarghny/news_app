@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 // https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=708d777b7af549bfbcbe9c715aeeade6
 // searh method (url):v2/everything?
 // queries: q=tesla&from=2023-12-19&sortBy=publishedAt&apiKey=708d777b7af549bfbcbe9c715aeeade6
-// secand apiKey: 65f7f556ec76449fa7dc7c0069f040ca 
+// secand apiKey: 65f7f556ec76449fa7dc7c0069f040ca
 abstract class DioHelper {
   static Dio? dio;
   static void init() {

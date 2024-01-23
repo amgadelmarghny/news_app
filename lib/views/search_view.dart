@@ -34,7 +34,13 @@ class SearchView extends StatelessWidget {
                   ),
                   BlocConsumer<SearchCubit, SearchState>(
                     listener: (context, state) {
-                      // TODO: implement listener
+                      if (state is FailurState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(state.err),
+                          ),
+                        );
+                      }
                     },
                     builder: (context, state) {
                       if (state is LoadingState) {

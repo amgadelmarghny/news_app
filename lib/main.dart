@@ -7,7 +7,6 @@ import 'package:news_app/shared/network/local/shared_pref_helper.dart';
 import 'package:news_app/shared/network/remot/dio_helper.dart';
 import 'package:news_app/views/home_view.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();

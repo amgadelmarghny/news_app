@@ -9,11 +9,13 @@ class NewsItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => WebviewView(
-                      url: mapNewsItemData['url'],
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebviewView(
+              url: mapNewsItemData['url'],
+            ),
+          ),
+        );
       },
       child: SizedBox(
         height: 130,

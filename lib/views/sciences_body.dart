@@ -11,4 +11,3 @@ class SciencesBody extends StatelessWidget {
     return const CustomBlocConsumerBody();
   }
 }
-

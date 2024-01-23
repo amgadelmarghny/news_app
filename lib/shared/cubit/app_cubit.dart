@@ -40,10 +40,10 @@ class AppCubit extends Cubit<AppState> {
   }
 
   bool isDark = false;
-  void changThemeMode({ bool? fromShared}) async {
+  void changThemeMode({bool? fromShared}) async {
     if (fromShared != null) {
       isDark = fromShared;
-       emit(ChangeSystemThemeState());
+      emit(ChangeSystemThemeState());
     } else {
       isDark = !isDark;
       await CashHelper.setSharePref(isDark: isDark).then((value) {
@@ -52,7 +52,7 @@ class AppCubit extends Cubit<AppState> {
     }
   }
 
-/////////////////////////////////
+/////////////////////////////////////
   List<dynamic> newsList = [];
 
   void getData({required String category}) async {

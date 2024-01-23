@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/shared/cubit/app_cupit/app_cubit.dart';
 import 'package:news_app/views/search_view.dart';
-import '../shared/cubit/app_cubit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

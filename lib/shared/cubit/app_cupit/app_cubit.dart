@@ -56,17 +56,17 @@ class AppCubit extends Cubit<AppState> {
   List<dynamic> newsList = [];
 
   void getData({required String category}) async {
-    emit(DioLoadingState());
+    emit(LoadingState());
     await DioHelper.get(url: 'v2/top-headlines', query: {
       "country": 'eg',
       "category": category,
-      "apiKey": '708d777b7af549bfbcbe9c715aeeade6',
+      "apiKey": '65f7f556ec76449fa7dc7c0069f040ca ',
     }).then((value) {
       newsList = value.data['articles'];
-      emit(DioGetSuccessState());
+      emit(GetSuccessState());
     }).catchError((err) {
       debugPrint('There is an error : $err');
-      emit(DioFailurState(err: 'There is an error : $err'));
+      emit(FailurState(err: 'There is an error : $err'));
     });
   }
 }

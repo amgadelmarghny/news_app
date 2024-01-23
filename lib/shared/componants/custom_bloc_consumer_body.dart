@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/shared/componants/news_item.dart';
-import 'package:news_app/shared/cubit/app_cubit.dart';
+import 'package:news_app/shared/cubit/app_cupit/app_cubit.dart';
 
 class CustomBlocConsumerBody extends StatelessWidget {
   const CustomBlocConsumerBody({
@@ -12,7 +12,7 @@ class CustomBlocConsumerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {
-        if (state is DioFailurState) {
+        if (state is FailurState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.err),
@@ -21,14 +21,15 @@ class CustomBlocConsumerBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is DioLoadingState || state is BottomNavBarState) {
+        if (state is LoadingState || state is BottomNavBarState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (state is DioGetSuccessState || state is ChangeSystemThemeState) {
+        if (state is GetSuccessState || state is ChangeSystemThemeState) {
           List<dynamic> list = BlocProvider.of<AppCubit>(context).newsList;
           return ListView.separated(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return NewsItem(mapNewsItemData: list[index]);
             },
@@ -42,6 +43,7 @@ class CustomBlocConsumerBody extends StatelessWidget {
         }
         return const Center(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 'Somthing went wrong',

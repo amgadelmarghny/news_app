@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/views/search_view.dart';
 import '../shared/cubit/app_cubit.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,7 +17,13 @@ class HomeView extends StatelessWidget {
             title: const Text('News App'),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SearchView(),
+                    ),
+                  );
+                },
                 icon: const Icon(
                   Icons.search,
                 ),

@@ -28,27 +28,22 @@ class CustomTextField extends StatelessWidget {
         return null;
       },
       onChanged: onChange,
-      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         suffixIcon: suffixIcon != null
             ? IconButton(
                 onPressed: suffixOnPressed,
                 icon: Icon(
                   suffixIcon,
-                  color: Colors.white,
                   size: 30,
                 ),
               )
             : null,
         hintText: hintText,
-        hintStyle: const TextStyle(color: Colors.white),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.tealAccent),
           borderRadius: BorderRadius.circular(10),
         ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
+        border: const OutlineInputBorder(),
       ),
     );
   }

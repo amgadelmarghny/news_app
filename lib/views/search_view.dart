@@ -14,10 +14,7 @@ class SearchView extends StatelessWidget {
       create: (context) => SearchCubit(),
       child: Scaffold(
         appBar: AppBar(),
-        body: BlocConsumer<SearchCubit, SearchState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
+        body: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,7 +40,7 @@ class SearchView extends StatelessWidget {
                       if (state is LoadingState) {
                         return const Center(
                           child: CircularProgressIndicator(
-                            backgroundColor: Colors.tealAccent,
+                            backgroundColor: Colors.teal,
                           ),
                         );
                       } else if (state is SearchSuccessState) {

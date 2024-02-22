@@ -58,9 +58,9 @@ class AppCubit extends Cubit<AppState> {
   void getData({required String category}) async {
     emit(LoadingState());
     await DioHelper.get(url: 'v2/top-headlines', query: {
-      "country": 'eg',
+      "country": 'us',
       "category": category,
-      "apiKey": '65f7f556ec76449fa7dc7c0069f040ca ',
+      "apiKey": '708d777b7af549bfbcbe9c715aeeade6 ',
     }).then((value) {
       newsList = value.data['articles'];
       emit(GetSuccessState());

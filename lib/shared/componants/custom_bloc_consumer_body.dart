@@ -31,9 +31,7 @@ class CustomBlocConsumerBody extends StatelessWidget {
               return NewsItem(mapNewsItemData: list[index]);
             },
             separatorBuilder: (contex, index) {
-              return const Divider(
-                color: Colors.grey,
-              );
+              return const SizedBox(height: 30);
             },
             itemCount: list.length,
           );

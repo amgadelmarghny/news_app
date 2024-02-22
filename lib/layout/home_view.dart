@@ -14,7 +14,20 @@ class HomeView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('News App'),
+            title: RichText(
+              text: TextSpan(
+                text: 'News',
+                style: Theme.of(context).textTheme.titleLarge,
+                children: const [
+                  TextSpan(
+                    text: ' Cloud',
+                    style: TextStyle(
+                      color: Colors.teal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             actions: [
               IconButton(
                 onPressed: () {

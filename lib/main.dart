@@ -5,7 +5,7 @@ import 'package:news_app/shared/cubit/my_observe.dart';
 import 'package:news_app/shared/network/local/shared_pref_helper.dart';
 import 'package:news_app/shared/network/remot/dio_helper.dart';
 import 'package:news_app/shared/style/theme.dart';
-import 'package:news_app/views/home_view.dart';
+import 'package:news_app/layout/home_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,16 +14,13 @@ void main() async {
   Bloc.observer = MyObserve();
   runApp(const NewsApp());
 }
-
 class NewsApp extends StatefulWidget {
   const NewsApp({super.key});
 
   @override
   State<NewsApp> createState() => _NewsAppState();
 }
-
 class _NewsAppState extends State<NewsApp> {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     bool? isDark = CashHelper.getSharePref();
